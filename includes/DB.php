@@ -17,6 +17,14 @@ class DB {
         $stmt->bindParam('ssn', $student['ssn']);
         $stmt->execute();
     }
+
+    function getStudents() {
+        $sql = "SELECT * FROM students";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

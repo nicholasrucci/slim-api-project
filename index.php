@@ -20,6 +20,12 @@ $app->post('/students', function() use ($app){
     echo "Success";
 });
 
+$app->get('/students', function() use ($app) {
+    $db = new DB();
+    $students = $db->getStudents();
+    $app->render('students/index.php', $students);
+});
+
 $app->run();
 
 ?>
