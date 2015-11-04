@@ -1,4 +1,7 @@
+<?php include 'includes/header.php' ?>
+
 <h2>Add a Student</h2>
+
 
 <form method="post" action="/index.php/students">
 
@@ -19,11 +22,14 @@
 
     <p>
         <label for="ssn">Social Security Number:</label><br>
-        <input type="number" id="ssn" name="ssn">
+        <input type="text" id="ssn" name="ssn">
     </p>
 
     <p>
-        <input type="submit" name="submit" value="Add Student">
+        <a href="/students" class="btn btn-primary">Back to all students</a>
+        <input type="submit" name="submit" value="Add Student" class="btn btn-success">
     </p>
 
 </form>
+
+<?php include 'includes/footer.php' ?>

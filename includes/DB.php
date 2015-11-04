@@ -5,7 +5,7 @@ class DB {
     private $connection;
 
     function __construct() {
-        $this->connection = new PDO("mysql:us-cdbr-iron-east-03.cleardb.net;dbname=heroku_24b42298d34bf6e", "b9017e46ee36f9", "97cd56a6");
+        $this->connection = new PDO("mysql:host=us-cdbr-iron-east-03.cleardb.net;dbname=heroku_24b42298d34bf6e", "b9017e46ee36f9", "97cd56a6");
     }
 
     function createStudent($student) {
@@ -24,6 +24,14 @@ class DB {
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getStudent($id) {
+        $sql = "SELECT * FROM students WHERE id=$id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 
