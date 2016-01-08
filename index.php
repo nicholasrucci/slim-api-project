@@ -37,7 +37,9 @@ $app->post('/api/students', 'APIrequest', function() use ($app){
     $db = new DB();
     $db->createStudent($data);
 
-    $app->redirect('/students');
+    $app->render(200, array(
+        'data' => $data
+    ));
 });
 
 $app->get('/students', function() use ($app) {
@@ -67,7 +69,7 @@ $app->get('/students/:id', function($id) use ($app){
 $app->get('/api/students/:id', 'APIrequest', function($id) use ($app){
     $db = new DB();
     $student = $db->getStudent($id);
-    $app->render('students/show.php', array(
+    $app->render(200, array(
         'student' => $student
     ));
 });
